@@ -191,8 +191,8 @@ public class RabbitMQConsumer implements Serializable {
     connection.addShutdownListener(new ShutdownListener() {
       @Override
       public void shutdownCompleted(ShutdownSignalException cause) {
-        logger.error("shutdown signal received", cause);
-        reporter.reportError(cause);
+/*        logger.error("shutdown signal received", cause);
+        reporter.reportError(cause); */
         reset();
       }
     });

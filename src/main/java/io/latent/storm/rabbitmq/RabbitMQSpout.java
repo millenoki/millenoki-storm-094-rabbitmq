@@ -27,7 +27,7 @@ public class RabbitMQSpout extends BaseRichSpout {
 
   private transient Logger logger;
   private transient RabbitMQConsumer consumer;
-  private transient SpoutOutputCollector collector;
+  protected transient SpoutOutputCollector collector;
   private transient int prefetchCount;
 
   private boolean active;
@@ -118,7 +118,7 @@ public class RabbitMQSpout extends BaseRichSpout {
       spoutOutputCollector.emit(streamId, tuple, getDeliveryTag(message));
   }
 
-  private List<Object> extractTuple(Message message) {
+  protected List<Object> extractTuple(Message message) {
     long deliveryTag = getDeliveryTag(message);
     try {
       List<Object> tuple = scheme.deserialize(message);
@@ -173,4 +173,9 @@ public class RabbitMQSpout extends BaseRichSpout {
   protected long getDeliveryTag(Message message) {
     return ((Message.DeliveredMessage) message).getDeliveryTag();
   }
+
+  protected RabbitMQConsumer getConsumer() {
+    return consumer;
+  }
+
 }
