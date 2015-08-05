@@ -102,7 +102,6 @@
         </plugins>
     </build>
 
-<!-- put in if experiment works
     <distributionManagement>
         <repository>
             <id>central</id>
@@ -110,7 +109,6 @@
             <url>http://millenoki.artifactoryonline.com/millenoki/libs-release-local</url>
         </repository>
     </distributionManagement>
--->
 
     <dependencies>
         <dependency>
